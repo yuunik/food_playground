@@ -10,7 +10,6 @@ class AppTheme {
 
   // color config
   static const Color accentColor = Colors.amberAccent;
-
   // normal
   static const Color lightColor = Colors.pink;
   static final ThemeData lightTheme = ThemeData(
@@ -18,12 +17,13 @@ class AppTheme {
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.tealAccent
     ),
-    canvasColor: const Color.fromARGB(255, 254, 222, 1),
+    canvasColor: const Color.fromRGBO(255, 254, 222, 1),
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
     textTheme: const TextTheme(
       bodyMedium: TextStyle(
-        fontSize: bodyTextSize
+        fontSize: bodyTextSize,
+        color: lightColor
       ),
       displaySmall: TextStyle(
         fontSize: smallTextSize,
@@ -48,7 +48,8 @@ class AppTheme {
     ),
     textTheme: const TextTheme(
       bodyMedium: TextStyle(
-        fontSize: bodyTextSize
+        fontSize: bodyTextSize,
+        color: darkColor
       ),
       displaySmall: TextStyle(
         fontSize: smallTextSize

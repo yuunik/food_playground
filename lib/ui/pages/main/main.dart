@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_playground/ui/shared/AppTheme.dart';
+import 'package:food_playground/ui/shared/app_theme.dart';
 import 'package:food_playground/ui/pages/main/initialize_list.dart';
+import 'package:food_playground/ui/shared/size_fit.dart';
 
 class MainPage extends StatefulWidget {
   // router name
@@ -17,6 +18,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    SizeFit.initialize(context);
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -26,6 +28,7 @@ class _MainPageState extends State<MainPage> {
         currentIndex: _currentIndex,
         selectedFontSize: AppTheme.bottomNavigationBarTextSize,
         unselectedFontSize: AppTheme.bottomNavigationBarTextSize,
+        selectedItemColor: const Color.fromRGBO(53, 116, 240, 1),
         items: bottomNavigationList,
         onTap: (index) {
           setState(() {

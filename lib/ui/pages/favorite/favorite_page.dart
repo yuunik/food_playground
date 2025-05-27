@@ -11,7 +11,7 @@ class FavoritePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Favorite"),
-        backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+        backgroundColor: const Color.fromRGBO(53, 116, 240, 1),
       ),
       body: const Center(
         child: Text("Favorite Page"),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_playground/core/router/AppRouter.dart';
-import 'package:food_playground/ui/shared/AppTheme.dart';
+import 'package:food_playground/core/router/app_router.dart';
+import 'package:food_playground/ui/shared/app_theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
