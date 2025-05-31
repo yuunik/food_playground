@@ -31,15 +31,15 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
         padding: const EdgeInsets.all(20),
         itemCount: _categoryList.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
             crossAxisCount: 2,
-            childAspectRatio: 4 / 3),
+            childAspectRatio: 5 / 3),
         itemBuilder: (context, index) {
           return Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
-                  _categoryList[index].color!.withOpacity(0.7),
+                  _categoryList[index].color!.withOpacity(0.5),
                   _categoryList[index].color!
                 ]),
                 borderRadius: BorderRadius.circular(8)),
