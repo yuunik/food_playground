@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/services.dart';
-import 'package:food_playground/core/model/CateogryModel.dart';
+import 'package:food_playground/core/model/category_model.dart';
 
 class JsonParse {
   // 获取 categoryList
