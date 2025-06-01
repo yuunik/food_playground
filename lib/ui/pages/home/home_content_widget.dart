@@ -1,13 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:food_playground/core/model/category_model.dart';
 import 'package:food_playground/core/utils/json_parse.dart';
+import 'package:food_playground/core/viewmodel/category_view_model.dart';
 import 'package:food_playground/ui/pages/home/home_content_item_widget.dart';
+import 'package:get/get.dart';
 
-class HomeContentWidget extends StatelessWidget {
+class HomeContentWidget extends StatefulWidget {
   const HomeContentWidget({super.key});
 
   @override
+  State<HomeContentWidget> createState() => _HomeContentWidgetState();
+}
+
+class _HomeContentWidgetState extends State<HomeContentWidget> {
+  // bool _isShowToast = false;
+
+  @override
   Widget build(BuildContext context) {
+    final categoryStore = Get.put(CategoryViewModel());
+    if (categoryStore.tipMsg == 'start') {
+      // 请求成功
+      return Obx(() {
+        if (categoryStore.isLoading.value) {
+          return const CircularProgressIndicator();
+        }
+        return Padding(
+          padding: const EdgeInsets.all(20),
+          child: GridView.builder(
+              itemCount: categoryStore.categoryList.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 20,
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.5),
+              itemBuilder: (context, index) {
+                return HomeContentItemWidget(
+                    category: categoryStore.categoryList[index]);
+              }),
+        );
+      });
+    }
+    print("你又忘记打开 serve 了！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！");
     return FutureBuilder<List<CategoryModel>>(
         future: JsonParse.getCategoryList(),
         builder: (context, snapshot) {
@@ -19,7 +52,7 @@ class HomeContentWidget extends StatelessWidget {
           }
           final categoryList = snapshot.data;
           return GridView.builder(
-            padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               itemCount: categoryList!.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisSpacing: 20,
@@ -32,3 +65,4 @@ class HomeContentWidget extends StatelessWidget {
         });
   }
 }
+
