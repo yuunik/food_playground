@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:food_playground/core/extension/int_fit.dart';
 import 'package:food_playground/core/model/meal_model.dart';
+import 'package:food_playground/ui/pages/detail/meal_detail_page.dart';
 import 'package:food_playground/ui/widgets/meal_operation_item.dart';
 
 class MealCard extends StatelessWidget {
@@ -11,12 +12,17 @@ class MealCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(20),
-      elevation: 5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.px)),
-      child: Column(
-        children: [buildMenuInfo(context), buildOperationInfo(context)],
+    return GestureDetector(
+      onTap: () => Navigator.of(context)
+          .pushNamed(MealDetailPage.routeName, arguments: _meal),
+      child: Card(
+        margin: const EdgeInsets.all(20),
+        elevation: 5,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.px)),
+        child: Column(
+          children: [buildMenuInfo(context), buildOperationInfo(context)],
+        ),
       ),
     );
   }
@@ -59,11 +65,12 @@ class MealCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          MealOperationItem(const Icon(Icons.schedule, color: Colors.grey), "${_meal.duration} min"),
-          MealOperationItem(
-              const Icon(Icons.restaurant, color: Colors.grey), _meal.complexityStr),
-          MealOperationItem(
-              const Icon(Icons.favorite, color: Colors.grey), _meal.isFavorite ? 'Collected' : 'Not favorite')
+          MealOperationItem(const Icon(Icons.schedule, color: Colors.grey),
+              "${_meal.duration} min"),
+          MealOperationItem(const Icon(Icons.restaurant, color: Colors.grey),
+              _meal.complexityStr),
+          MealOperationItem(const Icon(Icons.favorite, color: Colors.grey),
+              _meal.isFavorite ? 'Collected' : 'Not favorite')
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_playground/ui/pages/detail/meal_detail_page.dart';
 import 'package:food_playground/ui/pages/favorite/favorite_page.dart';
 import 'package:food_playground/ui/pages/home/home_page.dart';
 import 'package:food_playground/ui/pages/main/main.dart';
@@ -13,7 +14,8 @@ class AppRouter {
     MainPage.routeName: (context) => const MainPage(),
     HomePage.routeName: (context) => const HomePage(),
     FavoritePage.routeName: (context) => const FavoritePage(),
-    MealPage.routeName: (context) => const MealPage()
+    MealPage.routeName: (context) => const MealPage(),
+    MealDetailPage.routeName: (context) => const MealDetailPage()
   };
 
   // generate route
