@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:food_playground/core/model/category_model.dart';
 import 'package:food_playground/core/utils/json_parse.dart';
 import 'package:food_playground/core/viewmodel/category_view_model.dart';
 import 'package:food_playground/ui/pages/home/home_content_item_widget.dart';
-import 'package:get/get.dart';
 
 class HomeContentWidget extends StatefulWidget {
   const HomeContentWidget({super.key});
