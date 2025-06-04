@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_playground/core/model/meal_model.dart';
+import 'package:food_playground/ui/pages/detail/meal_detail_content_page.dart';
 
 class MealDetailPage extends StatelessWidget {
   // route name
@@ -17,9 +18,7 @@ class MealDetailPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color.fromRGBO(53, 116, 240, 1),
       ),
-      body: Center(
-        child: Text("${_meal.title} Info"),
-      ),
+      body: MealDetailContentPage(meal: _meal),
     );
   }
 }
