@@ -22,7 +22,6 @@ class CategoryViewModel extends GetxController {
     } catch (e) {
       isLoading.value = false;
       tipMsg.value = "Network error...";
-      print("测试.......");
     }
   }
 }

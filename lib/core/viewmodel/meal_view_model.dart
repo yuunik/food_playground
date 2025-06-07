@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 
 class MealViewModel extends GetxController {
   List<MealModel> mealList = [];
+  // 加载状态
+  var isLoading = true.obs;
 
   MealViewModel() {
     getMealList();
@@ -11,7 +13,14 @@ class MealViewModel extends GetxController {
 
   // 获取菜单列表
   getMealList() async {
-    final res = await MealRequest.getMealList();
-    mealList = res;
+    // 开始加载
+    isLoading.value = true;
+    try {
+      final res = await MealRequest.getMealList();
+      mealList = res;
+      isLoading.value = false;
+    } catch (e) {
+      isLoading.value = false;
+    }
   }
 }
