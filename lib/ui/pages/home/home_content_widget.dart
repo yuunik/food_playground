@@ -14,56 +14,63 @@ class HomeContentWidget extends StatefulWidget {
 }
 
 class _HomeContentWidgetState extends State<HomeContentWidget> {
-  // bool _isShowToast = false;
+  late final CategoryViewModel categoryStore;
+
+  @override
+  void initState() {
+    super.initState();
+    categoryStore = Get.put(CategoryViewModel());
+  }
 
   @override
   Widget build(BuildContext context) {
-    final categoryStore = Get.put(CategoryViewModel());
-    if (categoryStore.tipMsg == 'start') {
-      // 请求成功
-      return Obx(() {
-        if (categoryStore.isLoading.value) {
-          return const CircularProgressIndicator();
-        }
-        return Padding(
-          padding: const EdgeInsets.all(20),
-          child: GridView.builder(
-              itemCount: categoryStore.categoryList.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
-                  crossAxisCount: 2,
-                  childAspectRatio: 1.5),
-              itemBuilder: (context, index) {
-                return HomeContentItemWidget(
-                    category: categoryStore.categoryList[index]);
-              }),
-        );
-      });
-    }
-    print("你又忘记打开 serve 了！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！");
-    return FutureBuilder<List<CategoryModel>>(
-        future: JsonParse.getCategoryList(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Center(child: Text("Has Error, try again pls..."));
-          }
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          final categoryList = snapshot.data;
-          return GridView.builder(
-              padding: const EdgeInsets.all(20),
-              itemCount: categoryList!.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisSpacing: 20,
-                  childAspectRatio: 1.5,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 20),
-              itemBuilder: (context, index) {
-                return HomeContentItemWidget(category: categoryList[index]);
-              });
-        });
+    return Obx(() {
+      if (categoryStore.isLoading.value) {
+        return const Center(child: CircularProgressIndicator());
+      }
+
+      // serve 未开启, 读本地文件
+      if (categoryStore.categoryList.isEmpty) {
+        print("你又忘记开 serve 了!!!");
+        return FutureBuilder<List<CategoryModel>>(
+            future: JsonParse.getCategoryList(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Center(child: Text("Has Error, try again pls..."));
+              }
+              if (!snapshot.hasData) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              final categoryList = snapshot.data;
+              return GridView.builder(
+                  padding: const EdgeInsets.all(20),
+                  itemCount: categoryList!.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisSpacing: 20,
+                      childAspectRatio: 1.5,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 20),
+                  itemBuilder: (context, index) {
+                    return HomeContentItemWidget(category: categoryList[index]);
+                  });
+            });
+      }
+
+      // 网络请求成功
+      return Padding(
+        padding: const EdgeInsets.all(20),
+        child: GridView.builder(
+            itemCount: categoryStore.categoryList.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                crossAxisCount: 2,
+                childAspectRatio: 1.5),
+            itemBuilder: (context, index) {
+              return HomeContentItemWidget(
+                  category: categoryStore.categoryList[index]);
+            }),
+      );
+    });
   }
 }
-

@@ -20,8 +20,9 @@ class CategoryViewModel extends GetxController {
       isLoading.value = false;
       categoryList = res;
     } catch (e) {
-      isLoading.value = true;
+      isLoading.value = false;
       tipMsg.value = "Network error...";
+      print("测试.......");
     }
   }
 }
