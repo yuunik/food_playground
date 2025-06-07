@@ -15,7 +15,7 @@ class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.tealAccent
+      seedColor: Colors.blueAccent
     ),
     canvasColor: const Color.fromRGBO(255, 254, 222, 1),
     splashColor: Colors.transparent,

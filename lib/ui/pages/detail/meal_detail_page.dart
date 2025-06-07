@@ -19,6 +19,10 @@ class MealDetailPage extends StatelessWidget {
         backgroundColor: const Color.fromRGBO(53, 116, 240, 1),
       ),
       body: MealDetailContentPage(meal: _meal),
+      floatingActionButton:  FloatingActionButton(
+        child: const Icon(Icons.favorite_border),
+        onPressed: () {},
+      ),
     );
   }
 }

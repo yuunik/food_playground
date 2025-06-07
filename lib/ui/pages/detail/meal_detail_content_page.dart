@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:food_playground/core/extension/int_fit.dart';
 import 'package:food_playground/core/model/meal_model.dart';
 import 'package:food_playground/ui/shared/app_theme.dart';
@@ -32,17 +33,14 @@ class MealDetailContentPage extends StatelessWidget {
   // 制作材料
   Widget _wMenuMaterial(BuildContext context) {
     return Column(
-      children: [
-        _wContentTitle(context, "Crafting Materials"),
-        _wMaterialContent()
-      ],
+      children: [_wContentTitle(context, "制作材料"), _wMaterialContent()],
     );
   }
 
   // 制作步骤
   Widget _wMenuSteps(BuildContext context) {
     return Column(
-      children: [_wContentTitle(context, "Menu Steps"), _wStepsContent()],
+      children: [_wContentTitle(context, "制作流程"), _wStepsContent()],
     );
   }
 
@@ -67,7 +65,7 @@ class MealDetailContentPage extends StatelessWidget {
   // 制作材料内容
   Widget _wMaterialContent() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.px),
+      padding: EdgeInsets.symmetric(horizontal: 15.px),
       child: Container(
           padding: EdgeInsets.all(6.px),
           decoration: BoxDecoration(
@@ -81,7 +79,7 @@ class MealDetailContentPage extends StatelessWidget {
               itemCount: meal.ingredients.length,
               itemBuilder: (context, index) {
                 return Card(
-                    color: Colors.orangeAccent,
+                    color: Colors.amber,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
@@ -111,22 +109,34 @@ class MealDetailContentPage extends StatelessWidget {
             itemCount: meal.steps.length,
             itemBuilder: (context, index) {
               return ListTile(
-                  leading: ClipOval(
-                    child: Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                            color: Colors.pinkAccent,
-                            borderRadius: BorderRadius.circular(12.px)),
-                        child: Center(
-                          child: Text(
-                            "# $index",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(color: Colors.white),
-                          ),
-                        )),
+                  leading: CircleAvatar(
+                    // backgroundColor: Colors.pinkAccent,
+                    child: Text(
+                      "# ${index + 1}",
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(color: Colors.white),
+                    ),
+                    /* 方案二
+                    child: ClipOval(
+                      child: Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecorpinkAccent,
+                              borderRadius: BorderRadius.circular(12.px)),
+                          child: Center(
+                            child: Text(
+                              "# $index",
+                              style: Theme
+                                  .of(context)
+                                  .textThemeation(
+                              color: Colors.
+                                  .bodyMedium!
+                                  .copyWith(color: Colors.white),
+                            ),
+                          )),
+                    )*/
                   ),
                   title: Text(meal.steps[index]));
             },
