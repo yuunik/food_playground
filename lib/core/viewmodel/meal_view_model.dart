@@ -3,7 +3,7 @@ import 'package:food_playground/core/service/meal_request.dart';
 import 'package:get/get.dart';
 
 class MealViewModel extends GetxController {
-  List<MealModel> mealList = [];
+  List<MealModel> mealList = <MealModel>[].obs;
   // 加载状态
   var isLoading = true.obs;
 

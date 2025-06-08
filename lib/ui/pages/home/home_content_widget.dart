@@ -19,7 +19,7 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
   @override
   void initState() {
     super.initState();
-    categoryStore = Get.put(CategoryViewModel());
+    categoryStore = Get.put<CategoryViewModel>(CategoryViewModel());
   }
 
   @override
@@ -28,6 +28,8 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
       if (categoryStore.isLoading.value) {
         return const Center(child: CircularProgressIndicator());
       }
+
+      // Get.defaultDialog(title: "你好啊");
 
       // serve 未开启, 读本地文件
       if (categoryStore.categoryList.isEmpty) {
@@ -39,7 +41,17 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
                 return const Center(child: Text("Has Error, try again pls..."));
               }
               if (!snapshot.hasData) {
-                return const Center(child: CircularProgressIndicator());
+                return Center(
+                    child: Column(
+                      children: [
+                        const CircularProgressIndicator(),
+                        Text("又没开 serve 哦!",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(color: Colors.black54))
+                      ],
+                    ));
               }
               final categoryList = snapshot.data;
               return GridView.builder(
@@ -55,6 +67,8 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
                   });
             });
       }
+
+      Get.defaultDialog(title: "你好啊");
 
       // 网络请求成功
       return Padding(

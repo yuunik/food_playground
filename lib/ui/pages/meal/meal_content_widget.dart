@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_playground/core/utils/json_parse.dart';
 import 'package:get/get.dart';
 
+import 'package:food_playground/core/utils/json_parse.dart';
 import 'package:food_playground/core/model/meal_model.dart';
 import 'package:food_playground/core/viewmodel/meal_view_model.dart';
 import 'package:food_playground/ui/widgets/meal_card.dart';
@@ -31,7 +31,17 @@ class _MealContentWidgetState extends State<MealContentWidget> {
 
       if (mealStore.isLoading.value) {
         // 加载状态
-        return const Center(child: CircularProgressIndicator());
+        return Center(
+            child: Column(
+          children: [
+            const CircularProgressIndicator(),
+            Text("又没开 serve 哦!",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: Colors.black54))
+          ],
+        ));
       }
 
       // 网络错误
@@ -62,7 +72,6 @@ class _MealContentWidgetState extends State<MealContentWidget> {
       List<MealModel> mealList = mealStore.mealList
           .where((meal) => meal.categories.contains(category.id))
           .toList();
-
       return ListView.builder(
           itemCount: mealList.length,
           itemBuilder: (context, index) {
