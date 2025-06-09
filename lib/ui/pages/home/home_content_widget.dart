@@ -43,9 +43,10 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
               if (!snapshot.hasData) {
                 return Center(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const CircularProgressIndicator(),
-                        Text("又没开 serve 哦!",
+                        Text("又没开 serve 哦 ~",
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium!

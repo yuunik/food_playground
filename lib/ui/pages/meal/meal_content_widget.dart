@@ -33,9 +33,10 @@ class _MealContentWidgetState extends State<MealContentWidget> {
         // 加载状态
         return Center(
             child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const CircularProgressIndicator(),
-            Text("又没开 serve 哦!",
+            Text("又没开 serve 哦 ~",
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium!
