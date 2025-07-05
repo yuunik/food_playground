@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:food_playground/ui/pages/main/initialize_items.dart';
+import 'package:food_playground/ui/shared/app_theme.dart';
 
 class MainPage extends StatefulWidget {
   static const String routeName = "/";
@@ -20,6 +21,8 @@ class _MainPageState extends State<MainPage> {
       body: IndexedStack(index: _currentIndex, children: pageList),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
+        selectedFontSize: AppTheme.bodyTextSize,
+        unselectedFontSize: AppTheme.bodyTextSize,
         onTap: (val) => setState(() {
           _currentIndex = val;
         }),
