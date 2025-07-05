@@ -38,7 +38,8 @@ class AppTheme {
         fontSize: 20,
         fontWeight: FontWeight.bold,
         color: normalTextColor
-      )
+      ),
+      centerTitle: true
     )
   );
 
@@ -63,7 +64,8 @@ class AppTheme {
         fontSize: 20,
         fontWeight: FontWeight.bold,
         color: darkTextColor
-      )
+      ),
+      centerTitle: true
     )
   );
 }
