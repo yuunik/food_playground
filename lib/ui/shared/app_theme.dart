@@ -40,7 +40,8 @@ class AppTheme {
         color: normalTextColor
       ),
       centerTitle: true
-    )
+    ),
+    scaffoldBackgroundColor: const Color.fromRGBO(255, 254, 222, 1)
   );
 
   // dark mode
@@ -66,6 +67,7 @@ class AppTheme {
         color: darkTextColor
       ),
       centerTitle: true
-    )
+    ),
+      scaffoldBackgroundColor: const Color.fromRGBO(255, 254, 222, 1)
   );
 }
