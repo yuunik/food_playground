@@ -6,19 +6,8 @@ export 'package:food_playground/generated/json/category_model.g.dart';
 @JsonSerializable()
 class CategoryModel {
 	String? id;
-	List<String>? categories;
 	String? title;
-	int? affordability;
-	int? complexity;
-	String? imageUrl;
-	int? duration;
-	List<String>? ingredients;
-	List<String>? steps;
-	bool? isGlutenFree;
-	bool? isVegan;
-	bool? isVegetarian;
-	bool? isLactoseFree;
-	bool? isFavorite;
+	String? color;
 
 	CategoryModel();
 

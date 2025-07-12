@@ -14,7 +14,6 @@ class JsonParseUtil {
     for (var categoryMap in categoryMapList) {
       categoryList.add(CategoryModel.fromJson(categoryMap));
     }
-    print("执行完成");
     return categoryList;
   }
 }

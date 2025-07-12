@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_playground/core/utils/json_parse.dart';
-import 'package:food_playground/core/model/category_model.dart';
 import 'package:tdesign_flutter/tdesign_flutter.dart';
+
+import 'package:food_playground/core/model/category_model.dart';
+import 'package:food_playground/core/utils/json_parse.dart';
 
 class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
@@ -16,6 +17,7 @@ class _HomeContentState extends State<HomeContent> {
     return FutureBuilder(
       future: JsonParseUtil.getCategoryList(),
       builder: (context, snapshot) {
+        // 没有获取到数据时, 显示空数据
         if (!snapshot.hasData) {
           return const TDEmpty(
             type: TDEmptyType.plain,
@@ -23,6 +25,7 @@ class _HomeContentState extends State<HomeContent> {
           );
         }
 
+        // 报错时
         if (snapshot.hasError) {
           TDMessage.showMessage(
             context: context,
@@ -40,6 +43,7 @@ class _HomeContentState extends State<HomeContent> {
 
         List<CategoryModel> categoryList = snapshot.data as List<CategoryModel>;
         return SingleChildScrollView(
+          padding: const EdgeInsets.only(top: 0),
           child: GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
