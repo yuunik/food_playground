@@ -1,8 +1,8 @@
 import 'dart:ui';
+import 'dart:convert';
 
 import 'package:food_playground/generated/json/base/json_field.dart';
 import 'package:food_playground/generated/json/category_model.g.dart';
-import 'dart:convert';
 export 'package:food_playground/generated/json/category_model.g.dart';
 
 @JsonSerializable()

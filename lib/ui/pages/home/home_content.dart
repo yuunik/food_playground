@@ -14,6 +14,8 @@ class HomeContent extends StatefulWidget {
 class _HomeContentState extends State<HomeContent> {
   @override
   Widget build(BuildContext context) {
+    // 没有开启网络服务器时, 默认走这里,
+    // 会去读取本地json 文件数据
     return FutureBuilder(
       future: JsonParseUtil.getCategoryList(),
       builder: (context, snapshot) {
