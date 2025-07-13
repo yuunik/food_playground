@@ -43,7 +43,6 @@ class _HomeContentState extends State<HomeContent> {
 
         List<CategoryModel> categoryList = snapshot.data as List<CategoryModel>;
         return SingleChildScrollView(
-          padding: const EdgeInsets.only(top: 0),
           child: GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -56,9 +55,37 @@ class _HomeContentState extends State<HomeContent> {
               childAspectRatio: 2,
             ),
             itemBuilder: (context, index) {
-              return Card(
-                color: Colors.red,
-                child: Center(child: Text("${categoryList[index].title}")),
+              // 取出 当前的category
+              final category = categoryList[index];
+              return Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      category.color!.withValues(alpha: 0.5),
+                      category.color!,
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(15.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withValues(alpha: 0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Text(
+                    category.title as String,
+                    style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               );
             },
           ),

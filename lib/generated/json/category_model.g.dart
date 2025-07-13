@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:food_playground/generated/json/base/json_convert_content.dart';
 import 'package:food_playground/core/model/category_model.dart';
 
@@ -13,7 +15,8 @@ CategoryModel $CategoryModelFromJson(Map<String, dynamic> json) {
   }
   final String? color = jsonConvert.convert<String>(json['color']);
   if (color != null) {
-    categoryModel.color = color;
+    final colorHex = int.parse(color, radix: 16);
+    categoryModel.color = Color(colorHex | 0xFF000000);
   }
   return categoryModel;
 }
@@ -30,7 +33,7 @@ extension CategoryModelExtension on CategoryModel {
   CategoryModel copyWith({
     String? id,
     String? title,
-    String? color,
+    Color? color,
   }) {
     return CategoryModel()
       ..id = id ?? this.id

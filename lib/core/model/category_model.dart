@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:food_playground/generated/json/base/json_field.dart';
 import 'package:food_playground/generated/json/category_model.g.dart';
 import 'dart:convert';
@@ -7,7 +9,7 @@ export 'package:food_playground/generated/json/category_model.g.dart';
 class CategoryModel {
 	String? id;
 	String? title;
-	String? color;
+	Color? color;
 
 	CategoryModel();
 
