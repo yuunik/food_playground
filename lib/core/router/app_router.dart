@@ -9,8 +9,8 @@ class AppRouter {
 
   static final Map<String, WidgetBuilder> routes = {
     MainPage.routeName: (context) => const MainPage(),
-    HomePage.routeName: (context) => const HomePage(),
-    FavoritePage.routeName: (context) => const FavoritePage(),
+    // HomePage.routeName: (context) => const HomePage(),
+    // FavoritePage.routeName: (context) => const FavoritePage(),
   };
 
   static RouteFactory? generateRouter = (settings) {

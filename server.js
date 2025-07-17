@@ -5,7 +5,7 @@ const fs = require('fs');
 // 创建express实例
 const server = express();
 
-server.get("/api/category", (req, res) => {
+server.get("/api/getCategoryList", (req, res) => {
   fs.readFile('./assets/json/category.json', function(err, data) {
     if (err) {
       res.send(err);
@@ -14,7 +14,7 @@ server.get("/api/category", (req, res) => {
   })
 })
 
-server.get("/api/meal", (req, res) => {
+server.get("/api/getMealList", (req, res) => {
   fs.readFile('./assets/json/meal.json', (err, data) => {
     if (err) {
       res.send(err);
