@@ -13,9 +13,12 @@ class JsonParseUtil {
 
     final categoryMapList = jsonMap['category'];
     List<CategoryModel> categoryList = [];
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!");
     for (var categoryMap in categoryMapList) {
       categoryList.add(CategoryModel.fromJson(categoryMap));
     }
+    print(categoryList);
+    print("@@@@@@@@@@@@@@@@@");
     return categoryList;
   }
 

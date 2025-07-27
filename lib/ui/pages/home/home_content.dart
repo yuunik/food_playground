@@ -17,7 +17,7 @@ class _HomeContentState extends State<HomeContent> {
   Widget build(BuildContext context) {
     // 没有开启网络服务器时, 默认走这里,
     // 会去读取本地json 文件数据
-    return FutureBuilder(
+    return FutureBuilder<List<CategoryModel>>(
       future: JsonParseUtil.getCategoryList(),
       builder: (context, snapshot) {
         // 没有获取到数据时, 显示空数据
@@ -29,7 +29,7 @@ class _HomeContentState extends State<HomeContent> {
         }
 
         // 报错时
-        if (snapshot.hasError) {
+        if (snapshot.error != null) {
           TDMessage.showMessage(
             context: context,
             visible: true,
@@ -44,13 +44,13 @@ class _HomeContentState extends State<HomeContent> {
           );
         }
 
-        List<CategoryModel> categoryList = snapshot.data as List<CategoryModel>;
+        final categoryList = snapshot.data;
         return SingleChildScrollView(
           child: GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.all(8),
-            itemCount: categoryList.length,
+            itemCount: categoryList!.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 20,
@@ -60,6 +60,7 @@ class _HomeContentState extends State<HomeContent> {
             itemBuilder: (context, index) {
               // 取出 当前的category
               final category = categoryList[index];
+              print("category ====> $category");
               return HomeContentItem(category: category);
             },
           ),
