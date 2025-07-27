@@ -9,12 +9,26 @@ class MealPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final category =
-        ModalRoute.of(context)?.settings.arguments as CategoryModel;
+        ModalRoute.of(context)?.settings.arguments as CategoryModel?;
+    
+    // 如果category为null，显示错误页面
+    if (category == null) {
+      return Scaffold(
+        appBar: AppBar(title: const Text("Error")),
+        body: const Center(
+          child: Text(
+            "No category data found",
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
+      );
+    }
+
     print(category);
 
     return Scaffold(
       appBar: AppBar(title: Text(category.title)),
-      body: Text("content"),
+      body: const Text("content"),
     );
   }
 }
