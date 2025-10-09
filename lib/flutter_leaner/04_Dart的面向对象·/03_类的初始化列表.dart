@@ -6,13 +6,12 @@ main(List<String> args) {
   final person1 = Person('yuunik');
 }
 
+const temp = 20;
+
 class Person {
   String name;
   int age;
-  final Color ageColor;
 
   /// 初始化列表
-  Person(this.name, {int? age, Color? ageColor})
-    : age = age ?? 10,
-      ageColor = ageColor ?? Colors.red;
+  Person(this.name, {int? age}) : age = temp > 20 ? 30 : 50;
 }
