@@ -17,7 +17,7 @@
 // import 'package:food_playground/flutter_leaner/05_Dart%E4%B8%AD%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/utils/math_utils.dart'
 //     hide mul2;
 
-import 'package:food_playground/flutter_leaner/05_Dart%E4%B8%AD%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/utils/utils.dart';
+import 'utils/utils.dart';
 
 main(List<String> args) {
   print(sum1(209, 30));

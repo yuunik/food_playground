@@ -1,0 +1,6 @@
+name: yuunik
+description: a dart library
+environment:
+  sdk: '^3.8.0'
+dependencies:
+  http: ^1.5.0
