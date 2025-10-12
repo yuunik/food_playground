@@ -1,3 +1,5 @@
+/// 核心: 普通的构造方法, 默认会返回创建的对象,
+/// 需要手动返回一个对象时, 此时就需要用工厂构造函数
 main(List<String> args) {
   final personName1 = Person.withName("zhangsan");
   final personName2 = Person.withName("zhangsan");
