@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_playground/app.dart';
 
@@ -6,11 +7,13 @@ import 'package:food_playground/app.dart';
 // }
 
 main() => runApp(
-  Center(
-    child: Text(
-      "Hello World",
-      textDirection: TextDirection.rtl,
-      style: TextStyle(fontSize: 30, color: Colors.orangeAccent),
+  CupertinoApp(
+    home: Center(
+      child: Text(
+        "data",
+        textDirection: TextDirection.rtl,
+        style: TextStyle(fontSize: 30, color: Colors.orangeAccent),
+      ),
     ),
   ),
 );
