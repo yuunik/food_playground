@@ -1,22 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_playground/app.dart';
 
-// void main() {
-//   runApp(const App());
-// }
-
-main() => runApp(
-  CupertinoApp(
-    home: Center(
-      child: Text(
-        "data",
-        textDirection: TextDirection.rtl,
-        style: TextStyle(fontSize: 30, color: Colors.orangeAccent),
+void main() {
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(title: Text("第一个 Flutter 程序")),
+        body: Center(
+          child: Text(
+            "Hello World",
+            style: TextStyle(fontSize: 40, color: Colors.orange),
+          ),
+        ),
       ),
     ),
-  ),
-);
+  );
+}
 
 /// counter
 /// 运行一个 Flutter 项目:
@@ -30,6 +29,7 @@ main() => runApp(
 //   @override
 //   Widget build(BuildContext context) {
 //     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
 //       title: 'Flutter Demo',
 //       theme: ThemeData(
 //         // This is the theme of your application.
