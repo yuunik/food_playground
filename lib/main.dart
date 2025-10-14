@@ -19,7 +19,6 @@ class AppHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(title: Text("第一个 Flutter 程序")),
       body: AppContentBody(),
@@ -27,16 +26,35 @@ class AppHomePage extends StatelessWidget {
   }
 }
 
-class AppContentBody extends StatelessWidget {
-  const AppContentBody({super.key});
+/// 继承的抽象类中有注解 @protected,
+/// 则说明该方法的实现体需要继承的该类自己实现
+class AppContentBody extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return AppContentBodyState();
+  }
+}
+
+/// 所有的的Widget都不能定义状态, 只能定义状态的Widget定义状态
+/// StatefulWidget 不能定义状态, 则只能创建一个单独的类, 由这个类负责维护状态
+class AppContentBodyState extends State<AppContentBody> {
+  var flag = true;
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Center(
-      child: Text(
-        "Hello World",
-        style: TextStyle(fontSize: 40, color: Colors.orange),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Checkbox(
+            value: flag,
+            onChanged: (val) => setState(() {
+              if (val != null) flag = val;
+            }),
+          ),
+          Text("同意协议", style: TextStyle(fontSize: 30)),
+        ],
       ),
     );
   }
