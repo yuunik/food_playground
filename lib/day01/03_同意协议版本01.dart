@@ -43,7 +43,8 @@ class AppContentBody extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Checkbox(value: flag, onChanged: (val) => flag = val),
+          /// 以下为错误案例
+          // Checkbox(value: flag, onChanged: (val) => flag = val),
           Text("同意协议", style: TextStyle(fontSize: 20)),
         ],
       ),
