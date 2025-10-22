@@ -35,11 +35,13 @@ class AppHomePageContent extends StatelessWidget {
           desc: "desc",
           imageURL: 'https://picsum.photos/id/1/900/500',
         ),
+        const SizedBox(height: 6),
         AppProduct(
           title: "Apple2",
           desc: "desc2",
           imageURL: 'https://picsum.photos/id/2/900/500',
         ),
+        const SizedBox(height: 6),
         AppProduct(
           title: "Apple3",
           desc: "desc3",
