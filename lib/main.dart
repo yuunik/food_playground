@@ -18,77 +18,74 @@ class AppHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("商品列表")),
-      body: const AppHomePageContent(),
+      body: const AppHomePageContent(msg: "Hello, world!"),
     );
   }
 }
 
-class AppHomePageContent extends StatelessWidget {
-  const AppHomePageContent({super.key});
+/// Widget 是不加 _ , 因为是暴露给别人使用的
+class AppHomePageContent extends StatefulWidget {
+  final String msg;
+
+  const AppHomePageContent({super.key, String? msg}) : msg = msg ?? 'initData';
 
   @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        AppProduct(
-          title: "Apple",
-          desc: "desc",
-          imageURL: 'https://picsum.photos/id/1/900/500',
-        ),
-        const SizedBox(height: 6),
-        AppProduct(
-          title: "Apple2",
-          desc: "desc2",
-          imageURL: 'https://picsum.photos/id/2/900/500',
-        ),
-        const SizedBox(height: 6),
-        AppProduct(
-          title: "Apple3",
-          desc: "desc3",
-          imageURL: 'https://picsum.photos/id/3/900/500',
-        ),
-      ],
-    );
-  }
+  State<AppHomePageContent> createState() => _AppHomePageContentState();
 }
 
-// 子项
-class AppProduct extends StatelessWidget {
-  final String title;
+/**
+ * 为什么 Flutter 在设计的时候, StatefulWidget 的 build 方法放在 State 中
+ * 而不是放在 StatefulWidget 中?
+ *  1. build 出来的 Widget 是需要依赖 State 中的变量 (状态 / 数据)
+ *  2. 在 Flutter 的运行过程中,
+ *      Widget 是不断地销毁和创建的,
+ *        当我们自己的状态发生改变时, 并不希望重新创建一个新的 State
+ */
 
-  final String desc;
-
-  final String imageURL;
-
-  final titleStyle = const TextStyle(fontSize: 25, color: Colors.orange);
-  final descStyle = const TextStyle(fontSize: 20, color: Colors.green);
-
-  const AppProduct({
-    super.key,
-    required this.title,
-    required this.desc,
-    required this.imageURL,
-  });
+/// State 是加 _ , 因为状态这个类只是给 Widget 使用的
+class _AppHomePageContentState extends State<AppHomePageContent> {
+  int _sum = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12.0),
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 5, // 设置边框的宽度
-          color: Colors.pink, // 设置边框的颜色
-        ),
-      ),
+    return Center(
+      /// Column 的高度是整个主轴的高度
       child: Column(
-        spacing: 8.0,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 8,
         children: [
-          Text(title, style: titleStyle),
-          Text(desc, style: descStyle),
-          Image.network(imageURL),
+          _getButtonList(),
+          Text("当前计数为: $_sum", style: TextStyle(fontSize: 25)),
+
+          /// 如果方法内没有同名变量, this 可以省略 ;
+          /// 否则则不行
+          Text("当前接收到的信息为: ${widget.msg}"),
         ],
       ),
+    );
+  }
+
+  Widget _getButtonList() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          onPressed: () => setState(() {
+            _sum++;
+          }),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepOrange, // 设置背景色
+          ),
+          child: Text("+", style: TextStyle(fontSize: 20, color: Colors.white)),
+        ),
+        ElevatedButton(
+          onPressed: () => setState(() {
+            _sum--;
+          }),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
+          child: Text("-", style: TextStyle(fontSize: 20, color: Colors.white)),
+        ),
+      ],
     );
   }
 }
