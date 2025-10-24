@@ -18,47 +18,89 @@ class AppHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("商品列表")),
-      body: const AppHomePageContent(msg: "Hello, world!"),
+      body: AppHomePageContent(),
     );
   }
 }
 
-/// Widget 是不加 _ , 因为是暴露给别人使用的
+/// StatelessWidget 的生命周期
+// class AppHomePageContent extends StatelessWidget {
+//   AppHomePageContent({super.key}) {
+//     print("AppHomePageContent constructor");
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     print("AppHomePageContent build");
+//     return Center(child: Text("Hello, world!"));
+//   }
+// }
+
 class AppHomePageContent extends StatefulWidget {
   final String msg;
 
-  const AppHomePageContent({super.key, String? msg}) : msg = msg ?? 'initData';
+  AppHomePageContent({super.key, String? msg}) : msg = msg ?? 'initData' {
+    print("1 ==> AppHomePageContent constructor");
+  }
 
   @override
-  State<AppHomePageContent> createState() => _AppHomePageContentState();
+  State<AppHomePageContent> createState() {
+    print("2 ==> AppHomePageContent createState");
+    return _AppHomePageContentState();
+  }
 }
 
-/**
- * 为什么 Flutter 在设计的时候, StatefulWidget 的 build 方法放在 State 中
- * 而不是放在 StatefulWidget 中?
- *  1. build 出来的 Widget 是需要依赖 State 中的变量 (状态 / 数据)
- *  2. 在 Flutter 的运行过程中,
- *      Widget 是不断地销毁和创建的,
- *        当我们自己的状态发生改变时, 并不希望重新创建一个新的 State
- */
-
-/// State 是加 _ , 因为状态这个类只是给 Widget 使用的
 class _AppHomePageContentState extends State<AppHomePageContent> {
   int _sum = 0;
 
+  _AppHomePageContentState() {
+    print("3 ==> _AppHomePageContentState constructor");
+  }
+
+  @override
+  void initState() {
+    /// 强调: 必须调用 super
+    /// 1. 父类会帮助进行初始化
+    /// 2. 如果不调用, 会报错;
+    ///   其继承的父类的initState 方法有@mustCallSuper注释,
+    ///   该注释要求子类在实现完自身的 initState 方法后, 必须调用 super.initState();
+    super.initState();
+    print("4 ==> _AppHomePageContentState initState");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("update ==> _AppHomePageContentState didChangeDependencies");
+  }
+
+  @override
+  void didUpdateWidget(covariant AppHomePageContent oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("update222 ==> _AppHomePageContentState didUpdateWidget");
+  }
+
+  @override
+  void dispose() {
+    /// 强调: 必须调用 super
+    /// 1. 父类会帮助进行初始化
+    /// 2. 如果不调用, 会报错;
+    ///   其继承的父类的initState 方法有@mustCallSuper注释,
+    ///   该注释要求子类在实现完自身的 initState 方法后, 必须调用 super.initState();
+    super.dispose();
+    print("6 ==> _AppHomePageContentState dispose");
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("5 ==> _AppHomePageContentState build");
     return Center(
-      /// Column 的高度是整个主轴的高度
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 8,
         children: [
           _getButtonList(),
           Text("当前计数为: $_sum", style: TextStyle(fontSize: 25)),
-
-          /// 如果方法内没有同名变量, this 可以省略 ;
-          /// 否则则不行
           Text("当前接收到的信息为: ${widget.msg}"),
         ],
       ),
