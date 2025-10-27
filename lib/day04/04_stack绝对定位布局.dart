@@ -17,7 +17,7 @@ class AppHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("商品列表")),
+      appBar: AppBar(title: const Text("基础 Widget")),
       body: AppHomePageContent(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => print("FloatingActionButton click"),
