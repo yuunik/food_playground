@@ -17,7 +17,7 @@ class AppHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("基础 Widget")),
+      appBar: AppBar(title: const Text("商品列表")),
       body: AppHomePageContent(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => print("FloatingActionButton click"),
@@ -44,8 +44,15 @@ class _AppHomePageContentState extends State<AppHomePageContent> {
   }
 }
 
-class StackDemo2 extends StatelessWidget {
+class StackDemo2 extends StatefulWidget {
   const StackDemo2({super.key});
+
+  @override
+  State<StackDemo2> createState() => _StackDemo2State();
+}
+
+class _StackDemo2State extends State<StackDemo2> {
+  bool _isFavor = false;
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +74,13 @@ class StackDemo2 extends StatelessWidget {
                   style: TextStyle(fontSize: 30, color: Colors.white),
                 ),
                 IconButton(
-                  onPressed: () => print("iconbutton click"),
-                  icon: Icon(Icons.login, color: Colors.white),
+                  onPressed: () => setState(() {
+                    _isFavor = !_isFavor;
+                  }),
+                  icon: Icon(
+                    Icons.login,
+                    color: _isFavor ? Colors.redAccent : Colors.white,
+                  ),
                 ),
               ],
             ),
