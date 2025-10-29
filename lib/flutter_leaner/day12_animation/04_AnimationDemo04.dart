@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// 03 Demo的改进方案一
+/// 记录动画的播放状态, 当恢复播放时, 按照原来的播放状态执行
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
