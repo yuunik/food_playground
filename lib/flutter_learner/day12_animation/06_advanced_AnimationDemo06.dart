@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// 此时的动画效果就不需要不断重构_AppHomePageState的build方法来实现
+/// 降低性能消耗
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
