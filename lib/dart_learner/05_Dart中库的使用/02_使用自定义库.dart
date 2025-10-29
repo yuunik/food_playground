@@ -6,15 +6,15 @@
  */
 
 /// as 关键字用于给库起别名
-// import 'package:food_playground/flutter_leaner/05_Dart%E4%B8%AD%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/utils/math_utils.dart'
+// import 'package:food_playground/flutter_learner/05_Dart%E4%B8%AD%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/utils/math_utils.dart'
 //     as mathUtil;
 
 /// show 可以执行要导入的内容
-// import 'package:food_playground/flutter_leaner/05_Dart%E4%B8%AD%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/utils/math_utils.dart' show sum1;
+// import 'package:food_playground/flutter_learner/05_Dart%E4%B8%AD%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/utils/math_utils.dart' show sum1;
 
 /// hide 隐藏某个要导入的内容, 导入其他内容
-// import 'package:food_playground/flutter_leaner/05_Dart%E4%B8%AD%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/utils/date_utils.dart';
-// import 'package:food_playground/flutter_leaner/05_Dart%E4%B8%AD%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/utils/math_utils.dart'
+// import 'package:food_playground/flutter_learner/05_Dart%E4%B8%AD%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/utils/date_utils.dart';
+// import 'package:food_playground/flutter_learner/05_Dart%E4%B8%AD%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/utils/math_utils.dart'
 //     hide mul2;
 
 import 'utils/utils.dart';
