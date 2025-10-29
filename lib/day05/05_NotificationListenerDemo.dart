@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -21,8 +19,6 @@ class AppHomePage extends StatefulWidget {
 }
 
 class _AppHomePageState extends State<AppHomePage> {
-  bool _isShowButton = false;
-
   @override
   Widget build(BuildContext context) {
     /**
