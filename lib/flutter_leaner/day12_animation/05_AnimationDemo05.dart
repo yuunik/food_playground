@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Demo 03 的改进方案二:
+/// 跟踪_animationController.status的状态
+/// 接着进行对应的操作
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
