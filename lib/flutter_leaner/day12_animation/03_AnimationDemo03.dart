@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// 动画的无限播放, 当按下按键时, 停止播放
+/// 可原本缩小的的动画, 停止播放后, 再开始播放,
+/// 哪怕缩小动画没播完, 也开始执行放大动画了
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
