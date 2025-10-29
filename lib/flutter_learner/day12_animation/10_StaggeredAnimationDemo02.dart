@@ -2,10 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-/// 将需要执行动画的 Widget 放到一个 AnimatedWidget 中的 build 方法里进行返回
-/// 缺点:
-///   1.  每次都需要创建一个类
-///   2.  如果构建的 Widget 有子类, 那么子类依旧会重复地不断构建, 即不断地执行 build 方法
+/// 以 AnimatedBuilder 的形式去优化交织动画的性能消耗
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
