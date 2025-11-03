@@ -5,10 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:food_playground/flutter_learner/_12_animation_P16/pages/image_preview.dart';
 import 'package:food_playground/flutter_learner/_12_animation_P16/pages/modal_page.dart';
 
-/// 将需要执行动画的 Widget 放到一个 AnimatedWidget 中的 build 方法里进行返回
-/// 缺点:
-///   1.  每次都需要创建一个类
-///   2.  如果构建的 Widget 有子类, 那么子类依旧会重复地不断构建, 即不断地执行 build 方法
+/// 下拉刷新功能已实现
+/// 上拉加载更多尚未做
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
