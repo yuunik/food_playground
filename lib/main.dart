@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:food_playground/flutter_learner/_12_animation_P16/pages/image_preview.dart';
-import 'package:food_playground/flutter_learner/_12_animation_P16/pages/modal_page.dart';
 
 /// 将需要执行动画的 Widget 放到一个 AnimatedWidget 中的 build 方法里进行返回
 /// 缺点:
