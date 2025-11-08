@@ -87,12 +87,17 @@ class _AppHomePageState extends State<AppHomePage>
           ),
           NotificationListener(
             onNotification: (ScrollNotification notification) {
+              // 震动
+              HapticFeedback.lightImpact();
+              HapticFeedback.vibrate();
               if (notification is OverscrollNotification) {
                 print("越界滚动距离: ${notification.overscroll}");
                 if (notification.overscroll < 0 &&
                     notification.metrics.extentBefore == 0) {
                   // 用户在顶部向下拖动（下拉）
-                  print("检测到下拉动作！overscroll: ${notification.overscroll}");
+                  print(
+                    "检测到下拉动作！overscroll: ${notification.overscroll}, 当前的滑动距离为 ${notification.metrics.pixels}",
+                  );
                   // 你可以在这里触发自定义逻辑
                   setState(() {
                     _isRefreshing = true;
