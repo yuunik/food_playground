@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,6 +47,18 @@ class _AppHomePageState extends State<AppHomePage> {
     /// 而 isolate 之间不能共享对象引用（包括 this），
     /// 也无法访问类实例的私有成员。
     getMyIsolateSpare();
+
+    /// 1. 创建 Dio 对象
+    final dio = Dio();
+
+    /// 2. 发送网络请求
+    dio
+        .get("https://httpbin.org/get")
+        .then((res) => {print("当前 get 的请求结果为 $res")});
+
+    dio
+        .post("https://httpbin.org/post")
+        .then((res) => {print("当前 post 的请求结果为 $res")});
   }
 
   // compute
