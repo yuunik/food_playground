@@ -37,6 +37,7 @@ dependencies:
   dio: ^5.8.0+1
   tdesign_flutter: ^0.2.2
   provider: ^6.1.5
+  map_launcher: ^4.4.2
 
 dev_dependencies:
   flutter_test:

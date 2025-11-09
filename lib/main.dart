@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:map_launcher/map_launcher.dart';
 
 /// 将需要执行动画的 Widget 放到一个 AnimatedWidget 中的 build 方法里进行返回
 /// 缺点:
@@ -72,8 +73,27 @@ class _AppHomePageState extends State<AppHomePage>
     _isLoadMore = false;
   }
 
+  // 检查设备中可用的地图
+  Future checkMap() async {
+    final availableMaps = await MapLauncher.installedMaps;
+    print("当前可用的地图为: $availableMaps");
+    // await availableMaps.first.showDirections(
+    //   coords: Coords(37.759392, -122.5107336),
+    //   title: "Ocean Beach",
+    // );
+    if (await MapLauncher.isMapAvailable(MapType.google)) {
+      await MapLauncher.showDirections(
+        mapType: MapType.google,
+        destination: Coords(24.4836, 118.1278),
+        // title: "Ocean Beach",
+        // description: description,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    checkMap();
     return Scaffold(
       appBar: AppBar(title: Text("Hero animation demo"), centerTitle: true),
       body: Stack(
