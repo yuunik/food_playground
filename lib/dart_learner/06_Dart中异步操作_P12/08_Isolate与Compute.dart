@@ -40,7 +40,7 @@ class _AppHomePageState extends State<AppHomePage> {
     super.initState();
 
     /// compute 函数可以将计算任务放到独立的 Isolate (隔离线程)中执行避免阻塞 UI 线程.
-    /// compute 要求传入的函数必须是 顶层函数（top-level function） 或 静态函数（static function），
+    /// compute 要求传入的函数必须是 顶层函数（top-level function） 或 静态函数（static function）, 即全局函数，
     /// 不能是实例方法或私有方法（即使你把它放在同一个类里）。
     /// 这是因为 compute 会在一个新的 isolate 中运行该函数，
     /// 而 isolate 之间不能共享对象引用（包括 this），

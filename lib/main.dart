@@ -1,11 +1,7 @@
-import 'dart:math';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:food_playground/dart_learner/06_Dart%E4%B8%AD%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C_P12/service/http_request.dart';
-import 'package:map_launcher/map_launcher.dart';
 
 // 计算总数
 int getTotal(int count) {
