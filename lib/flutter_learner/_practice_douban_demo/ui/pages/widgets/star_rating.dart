@@ -36,10 +36,10 @@ class StarRating extends StatefulWidget {
     Widget? activeIcon,
     Widget? inactiveIcon,
   }) : activeColor = activeColor ?? Colors.redAccent,
-       inactiveColor = inactiveColor ?? Colors.redAccent,
+       inactiveColor = inactiveColor ?? Color(0xFFBBBBBB),
        inactiveIcon =
            inactiveIcon ??
-           Icon(Icons.star_border, color: Colors.redAccent, size: starSize),
+           Icon(Icons.star_border, color: Color(0xFFBBBBBB), size: starSize),
        activeIcon =
            activeIcon ??
            Icon(Icons.star, color: Colors.redAccent, size: starSize);
@@ -82,11 +82,11 @@ class _StarRatingState extends State<StarRating> {
     final floatStar = getLeftStar();
     // 加入小数部分代表的星星
     activeStarList.add(floatStar);
-    print(activeStarList);
 
     return activeStarList;
   }
 
+  // 获取裁剪后的星星
   Widget getLeftStar() {
     // 每颗星星所代表的分数
     double starRatingPer = widget.maxRating / widget.starCount;
@@ -95,8 +95,7 @@ class _StarRatingState extends State<StarRating> {
     // 获取评分的小数部分
     final floatRating = (widget.rating / starRatingPer) - entireRating;
     // 计算裁切的宽度
-    final clipRectWidth =
-        ((widget.rating / starRatingPer) - entireRating) * widget.starSize;
+    final clipRectWidth = floatRating * widget.starSize;
     return ClipRect(
       clipper: AppCustomerClipper(clipRectWidth),
       child: widget.activeIcon,
@@ -112,10 +111,7 @@ class AppCustomerClipper extends CustomClipper<Rect> {
 
   // 裁切的组件
   @override
-  Rect getClip(Size size) {
-    print("获取的裁切宽度为: $clipWidth, 高度为: ${size.height}");
-    return Rect.fromLTRB(0, 0, clipWidth, size.height);
-  }
+  Rect getClip(Size size) => Rect.fromLTRB(0, 0, clipWidth, size.height);
 
   @override
   bool shouldReclip(AppCustomerClipper oldClipper) =>
