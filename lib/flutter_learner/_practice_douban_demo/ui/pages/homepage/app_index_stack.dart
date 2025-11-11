@@ -13,7 +13,7 @@ class _AppIndexStackState extends State<AppIndexStack> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Homepage")),
-      body: Center(child: StarRating(rating: 5.5)),
+      body: Center(child: StarRating(rating: 8.7, starCount: 5)),
     );
   }
 }
