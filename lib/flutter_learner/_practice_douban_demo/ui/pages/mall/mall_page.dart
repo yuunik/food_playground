@@ -6,7 +6,7 @@ class MallPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("MallPage")),
+      appBar: AppBar(title: Text("市集")),
       body: Center(child: Text("MALL")),
     );
   }

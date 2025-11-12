@@ -15,6 +15,8 @@ class DouBanApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           centerTitle: true,
           backgroundColor: Colors.green.shade400,
+          // 设置标题文本样式
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
         ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           selectedItemColor: Colors.green.shade400,
