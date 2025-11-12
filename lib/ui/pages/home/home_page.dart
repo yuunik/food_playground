@@ -4,7 +4,7 @@ import 'package:food_playground/core/utils/json_parse.dart';
 import 'package:food_playground/ui/pages/home/home_content.dart';
 
 class HomePage extends StatelessWidget {
-  static const routeName = "/homepage";
+  static const routeName = "/main";
 
   const HomePage({super.key});
 
@@ -12,10 +12,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     JsonParseUtil.getCategoryList();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Homepage")
-      ),
-      body: const HomeContent()
+      appBar: AppBar(title: const Text("Homepage")),
+      body: const HomeContent(),
     );
   }
 }
