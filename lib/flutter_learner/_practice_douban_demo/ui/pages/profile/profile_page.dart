@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:food_playground/flutter_learner/_practice_douban_demo/ui/pages/profile/profile_content_page.dart';
+
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
@@ -7,7 +9,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("我的")),
-      body: Center(child: Text("PROFILE")),
+      body: ProfileContentPage(),
     );
   }
 }
