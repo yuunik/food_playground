@@ -18,7 +18,9 @@ class HomeContent extends StatelessWidget {
         // 获取数据
         final movieList = snapshot.data as List<MovieModel>;
         return ListView.builder(
-          itemBuilder: (context, index) => HomeMovieItem(movieList[index]),
+          itemCount: movieList.length,
+          itemBuilder: (context, index) =>
+              HomeMovieItem(movieList[index].data![0]),
         );
       },
     );

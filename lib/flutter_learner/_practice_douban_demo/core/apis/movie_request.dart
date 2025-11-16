@@ -4,9 +4,9 @@ import 'package:food_playground/flutter_learner/_practice_douban_demo/core/servi
 class MovieRequest {
   const MovieRequest._();
 
-  static Future<List<MovieModel>> getMovieList() async {
+  static Future<List<MovieModel>> getMovieList({String limit = "50"}) async {
     final result = await HttpRequest.send(
-      url: "/api/v1/top?type=Douban&skip=0&limit=50&lang=Cn",
+      url: "/api/v1/top?type=Douban&skip=0&limit=$limit&lang=Cn",
     );
 
     final List<MovieModel> movieList = [];
