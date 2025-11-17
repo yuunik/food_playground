@@ -20,7 +20,7 @@ class HomeContent extends StatelessWidget {
         return ListView.builder(
           itemCount: movieList.length,
           itemBuilder: (context, index) =>
-              HomeMovieItem(movieList[index].data![0]),
+              HomeMovieItem(movieList[index], doubanRatingRank: index + 1),
         );
       },
     );
