@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_playground/flutter_learner/_practice_douban_demo/core/model/movie_model.dart';
+import 'package:food_playground/flutter_learner/_practice_douban_demo/ui/pages/imgView/img_view.dart';
 import 'package:food_playground/flutter_learner/_practice_douban_demo/widgets/dashed_line.dart';
 import 'package:food_playground/flutter_learner/_practice_douban_demo/widgets/star_rating.dart';
 
@@ -28,7 +29,7 @@ class HomeMovieItem extends StatelessWidget {
           // 头部
           buildHeaderInfo(),
           // 内容区
-          buildContentInfo(),
+          buildContentInfo(context),
           // 电影简介
           buildMovieSummary(),
         ],
@@ -50,12 +51,12 @@ class HomeMovieItem extends StatelessWidget {
   );
 
   // 获取内容区组件
-  Widget buildContentInfo() => Row(
+  Widget buildContentInfo(BuildContext context) => Row(
     spacing: 8.0,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       // 电影海报
-      buildPoster(),
+      buildPoster(context),
 
       // 电影详情
       buildMovieDetail(),
@@ -69,7 +70,7 @@ class HomeMovieItem extends StatelessWidget {
   );
 
   // 获取电影海报组件
-  Widget buildPoster() {
+  Widget buildPoster(BuildContext context) {
     // 获取电影信息
     final movieDetail = movie.data?[0];
 
@@ -77,17 +78,36 @@ class HomeMovieItem extends StatelessWidget {
       return SizedBox.shrink();
     }
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(5.0),
-      child: Image.network(
-        movieDetail.poster!,
-        height: 150,
-        fit: BoxFit.cover,
-        // loadingBuilder: (context, child, progress) {
-        //   // if (progress == null) return child;
-        //
-        //   return Center(child: CircularProgressIndicator());
-        // },
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(
+        PageRouteBuilder(
+          transitionDuration: const Duration(seconds: 1),
+          pageBuilder:
+              (
+                BuildContext context,
+                Animation<double> animation,
+                Animation<double> secondaryAnimation,
+              ) => FadeTransition(
+                opacity: animation,
+                child: ImgView(imgUrl: movieDetail.poster!),
+              ),
+        ),
+      ),
+      child: Hero(
+        tag: movieDetail.poster!,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(5.0),
+          child: Image.network(
+            movieDetail.poster!,
+            height: 150,
+            fit: BoxFit.cover,
+            // loadingBuilder: (context, child, progress) {
+            //   // if (progress == null) return child;
+            //
+            //   return Center(child: CircularProgressIndicator());
+            // },
+          ),
+        ),
       ),
     );
   }
