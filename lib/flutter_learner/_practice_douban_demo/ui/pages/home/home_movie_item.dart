@@ -141,18 +141,27 @@ class HomeMovieItem extends StatelessWidget {
             size: 24,
             color: Colors.redAccent,
           ),
+          baseline: TextBaseline.ideographic,
         ),
         const TextSpan(text: " "),
         // 电影名
-        TextSpan(
-          text: movie.data?[0].name,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        WidgetSpan(
+          child: Text(
+            movie.data![0].name!,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          alignment: PlaceholderAlignment.middle,
+          baseline: TextBaseline.ideographic,
         ),
         const TextSpan(text: " "),
         // 电影上映时间
-        TextSpan(
-          text: "(${movie.year})",
-          style: TextStyle(fontSize: 14, color: Colors.grey),
+        WidgetSpan(
+          child: Text(
+            "(${movie.year})",
+            style: TextStyle(fontSize: 14, color: Colors.grey),
+          ),
+          alignment: PlaceholderAlignment.middle,
+          baseline: TextBaseline.ideographic,
         ),
       ],
     ),
