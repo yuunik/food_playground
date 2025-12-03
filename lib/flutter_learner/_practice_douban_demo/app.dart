@@ -8,7 +8,7 @@ class DouBanApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MainPage(),
+      home: Padding(padding: const EdgeInsets.all(8.0), child: MainPage()),
       theme: ThemeData(
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
