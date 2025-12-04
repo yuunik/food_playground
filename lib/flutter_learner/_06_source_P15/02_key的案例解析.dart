@@ -91,13 +91,14 @@ class _AppHomePageState extends State<AppHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // checkMap();
     return Scaffold(
-      appBar: AppBar(title: Text("Key 的使用"), centerTitle: true),
+      appBar: AppBar(title: Text("Key111 的使用"), centerTitle: true),
       body: ListView.builder(
         itemCount: _nameList.length,
-        itemBuilder: (BuildContext context, int index) =>
-            ListStatefulItem(name: _nameList[index]),
+        itemBuilder: (BuildContext context, int index) => ListStatefulItem(
+          name: _nameList[index],
+          key: ValueKey(_nameList[index]),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => setState(() {
@@ -148,6 +149,13 @@ class ListStatelessItem extends StatelessWidget {
 class ListStatefulItem extends StatefulWidget {
   final String name;
 
+  const ListStatefulItem({super.key, required this.name});
+
+  @override
+  State<ListStatefulItem> createState() => _ListStatefulItemState();
+}
+
+class _ListStatefulItemState extends State<ListStatefulItem> {
   final Color _renderColor = Color.fromARGB(
     255,
     Random().nextInt(256),
@@ -155,19 +163,11 @@ class ListStatefulItem extends StatefulWidget {
     Random().nextInt(256),
   );
 
-  ListStatefulItem({super.key, required this.name});
-
-  @override
-  State<ListStatefulItem> createState() => _ListStatefulItemState();
-}
-
-class _ListStatefulItemState extends State<ListStatefulItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: double.infinity,
       height: 52,
-      color: widget._renderColor,
+      color: _renderColor,
       child: Center(
         child: Text(
           widget.name,
