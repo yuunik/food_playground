@@ -1,5 +1,5 @@
 import 'package:food_playground/generated/json/base/json_convert_content.dart';
-import 'package:food_playground/flutter_learner/_practice_douban_demo/core/model/movie_model.dart';
+import 'package:food_playground/flutter_learner/_practice_douban_demo_P13_P14/core/model/movie_model.dart';
 
 MovieModel $MovieModelFromJson(Map<String, dynamic> json) {
   final MovieModel movieModel = MovieModel();

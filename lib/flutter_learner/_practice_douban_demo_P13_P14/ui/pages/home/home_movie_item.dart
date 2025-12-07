@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_playground/flutter_learner/_practice_douban_demo/core/model/movie_model.dart';
-import 'package:food_playground/flutter_learner/_practice_douban_demo/ui/pages/imgView/img_view.dart';
-import 'package:food_playground/flutter_learner/_practice_douban_demo/widgets/dashed_line.dart';
-import 'package:food_playground/flutter_learner/_practice_douban_demo/widgets/star_rating.dart';
+
+import 'package:food_playground/flutter_learner/_practice_douban_demo_P13_P14/core/model/movie_model.dart';
+import 'package:food_playground/flutter_learner/_practice_douban_demo_P13_P14/ui/pages/imgView/img_view.dart';
+import 'package:food_playground/flutter_learner/_practice_douban_demo_P13_P14/widgets/dashed_line.dart';
+import 'package:food_playground/flutter_learner/_practice_douban_demo_P13_P14/widgets/star_rating.dart';
 
 class HomeMovieItem extends StatelessWidget {
   final MovieModel movie;

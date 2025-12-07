@@ -1,5 +1,5 @@
-import 'package:food_playground/flutter_learner/_practice_douban_demo/core/model/movie_model.dart';
-import 'package:food_playground/flutter_learner/_practice_douban_demo/core/services/http_request.dart';
+import 'package:food_playground/flutter_learner/_practice_douban_demo_P13_P14/core/model/movie_model.dart';
+import 'package:food_playground/flutter_learner/_practice_douban_demo_P13_P14/core/services/http_request.dart';
 
 class MovieRequest {
   const MovieRequest._();

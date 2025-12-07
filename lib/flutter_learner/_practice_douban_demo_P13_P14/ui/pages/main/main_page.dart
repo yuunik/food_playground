@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_playground/flutter_learner/_practice_douban_demo/core/util/constants.dart';
 
-import 'package:food_playground/flutter_learner/_practice_douban_demo/widgets/dashed_line.dart';
+import 'package:food_playground/flutter_learner/_practice_douban_demo_P13_P14/core/util/constants.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
