@@ -38,6 +38,7 @@ dependencies:
   tdesign_flutter: ^0.2.2
   provider: ^6.1.5
   map_launcher: ^4.4.2
+  event_bus: ^2.0.1
 
 dev_dependencies:
   flutter_test:
