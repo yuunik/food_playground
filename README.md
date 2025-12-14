@@ -4,16 +4,22 @@
 
 ## 项目简介
 
-Food Playground 是一个 Flutter 学习项目，旨在通过系统化的示例和实践项目帮助开发者掌握 Dart 语言和 Flutter 框架。项目包含了丰富的学习模块和实战案例。
+Food Playground 是一个全栈 Flutter 学习项目，旨在通过系统化的示例和实践项目帮助开发者掌握 Dart 语言和 Flutter 框架。项目不仅包含了丰富的客户端学习模块，还提供了 Node.js 后端服务，实现完整的前后端交互学习体验。
 
 ## 技术栈
 
+### 前端 (Flutter)
 - **Flutter SDK**: ^3.8.1
 - **Dart**: ^3.8.1
-- **状态管理**: Provider
+- **状态管理**: Provider, InheritedWidget
 - **网络请求**: Dio
 - **UI 组件库**: TDesign Flutter
 - **地图功能**: Map Launcher
+
+### 后端 (Node.js)
+- **Node.js**: Express 框架
+- **数据存储**: JSON 文件
+- **API 服务**: RESTful API
 
 ## 项目结构
 
@@ -34,8 +40,11 @@ lib/
 │   ├── _04_layout_widgets_P8_P10/
 │   ├── _05_scroll_widgets_P11/
 │   ├── _06_source_P15/
-│   ├── _12_animation_P18/
-│   └── _practice_douban_demo/
+│   ├── _07_state_P16/
+│   ├── _08_event_P17/
+│   ├── _09_router_P17/
+│   ├── _10_animation_P18/
+│   └── _practice_douban_demo_P13_P14/
 │
 ├── flutter_test/          # Flutter 测试组件
 ├── core/                  # 核心功能模块
@@ -51,6 +60,15 @@ lib/
 │
 ├── app.dart              # 应用入口配置
 └── main.dart             # 主入口文件
+
+assets/                    # 资源文件
+├── images/               # 图片资源
+└── json/                 # JSON 数据文件
+    ├── category.json     # 分类数据
+    └── meal.json         # 餐品数据
+
+server.js                 # Node.js 后端服务
+package.json              # Node.js 项目配置
 ```
 
 ## 学习模块
@@ -72,31 +90,59 @@ lib/
 4. **布局组件** - Row、Column、Stack、Flex 等布局方式
 5. **滚动组件** - ListView、GridView、CustomScrollView
 6. **源码分析** - Flutter 框架源码解读
-7. **动画系统** - 动画基础、动画控制器、过渡动画
+7. **状态管理** - InheritedWidget、Provider 状态管理
+8. **事件处理** - 手势识别、事件响应机制
+9. **路由导航** - Navigator、路由管理、页面跳转
+10. **动画系统** - 动画基础、动画控制器、过渡动画
 
 ### 实战项目
 
-- **豆瓣 Demo** - 仿豆瓣应用的实践项目
+- **豆瓣 Demo** - 仿豆瓣应用的实践项目，包含电影列表、详情页等功能
+
+### 后端服务
+
+- **Express API 服务** - 提供分类和餐品数据的 RESTful API
+- **数据接口**:
+  - `GET /api/getCategoryList` - 获取分类列表
+  - `GET /api/getMealList` - 获取餐品列表
 
 ## 快速开始
 
 ### 环境要求
 
+#### Flutter 开发环境
 - Flutter SDK 3.8.1 或更高版本
 - Dart SDK 3.8.1 或更高版本
 - Android Studio / VS Code / IntelliJ IDEA
 
+#### Node.js 开发环境 (可选)
+- Node.js 14.0 或更高版本
+- npm 或 yarn 包管理器
+
 ### 安装依赖
 
+#### Flutter 项目
 ```bash
 flutter pub get
 ```
 
+#### Node.js 后端服务 (可选)
+```bash
+npm install express
+```
+
 ### 运行项目
 
+#### 启动 Flutter 应用
 ```bash
 flutter run
 ```
+
+#### 启动后端服务 (可选)
+```bash
+node server.js
+```
+服务将在 http://localhost:1997 启动
 
 ### 构建应用
 
@@ -115,10 +161,14 @@ flutter build web
 
 - 📚 系统化的 Dart 语言学习示例
 - 🎨 丰富的 Flutter 组件演示
-- 🔄 状态管理实践（InheritedWidget、Provider）
+- 🔄 多种状态管理实践（InheritedWidget、Provider）
 - 🌐 网络请求和数据处理
 - 🎭 动画效果实现
-- 📱 实战项目案例
+- 🧭 路由导航和页面管理
+- 👆 手势识别和事件处理
+- 📱 完整的实战项目案例
+- 🔧 Node.js 后端 API 服务
+- 🗂️ 跨平台支持（Android、iOS、Web、Desktop）
 
 ## 开发指南
 
@@ -130,13 +180,31 @@ flutter build web
 
 - 图片资源：`assets/images/`
 - JSON 数据：`assets/json/`
+  - `category.json` - 分类数据
+  - `meal.json` - 餐品数据
+
+### API 接口
+
+后端服务提供以下接口：
+
+- **获取分类列表**
+  ```
+  GET http://localhost:1997/api/getCategoryList
+  ```
+
+- **获取餐品列表**
+  ```
+  GET http://localhost:1997/api/getMealList
+  ```
 
 ## 学习建议
 
-1. 按照模块顺序学习，先掌握 Dart 基础再学习 Flutter
-2. 每个示例都包含详细注释，建议仔细阅读
-3. 动手实践每个示例，修改参数观察效果
-4. 完成基础学习后，尝试实战项目
+1. **基础学习路径**：按照模块顺序学习，先掌握 Dart 基础再学习 Flutter
+2. **实践为主**：每个示例都包含详细注释，建议仔细阅读并动手实践
+3. **参数调试**：修改示例中的参数，观察不同效果加深理解
+4. **状态管理**：重点学习不同的状态管理方案，理解其适用场景
+5. **全栈体验**：启动后端服务，体验完整的前后端交互开发
+6. **实战项目**：完成基础学习后，深入研究豆瓣 Demo 项目
 
 ## 相关资源
 
