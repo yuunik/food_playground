@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:food_playground/flutter_learner/_12_animation_P18/pages/modal_page.dart';
+import 'package:food_playground/flutter_learner/_10_animation_P18/pages/modal_page.dart';
 
 /// 页面路由转场方式
 void main() => runApp(MyApp());
