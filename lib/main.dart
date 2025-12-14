@@ -97,7 +97,9 @@ class _AppHomepageState extends State<AppHomepage> {
   }
 
   void _jumpToAboutPage(BuildContext context) async {
-    final res = await Navigator.of(context).pushNamed(AppAboutPage.routeName);
+    final res = await Navigator.of(
+      context,
+    ).pushNamed(AppAboutPage.routeName, arguments: "A msg from homepage.");
     if (res != null && res is String) {
       setState(() {
         _detailMsg = res;

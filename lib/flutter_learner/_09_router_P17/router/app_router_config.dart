@@ -23,6 +23,7 @@ class AppRouterConfig {
       return MaterialPageRoute(
         builder: (BuildContext context) =>
             AppDetailPage(msg: settings.arguments as String),
+        settings: settings,
       );
     }
     return null;

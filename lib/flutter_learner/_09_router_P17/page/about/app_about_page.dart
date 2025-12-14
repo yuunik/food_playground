@@ -7,6 +7,7 @@ class AppAboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final msg = ModalRoute.of(context)!.settings!.arguments;
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (bool didPop, dynamic result) {
@@ -19,7 +20,7 @@ class AppAboutPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("About"),
+              Text("About 页拿到的消息为: $msg"),
               ElevatedButton(
                 onPressed: () => _backToHome(context),
                 child: Text("回到首页"),
