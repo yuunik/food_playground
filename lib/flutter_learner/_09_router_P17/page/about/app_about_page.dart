@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
 
-class AppDetailPage extends StatelessWidget {
-  static String routeName = "/detail";
+class AppAboutPage extends StatelessWidget {
+  static String routeName = "/about";
 
-  final String msg;
-
-  const AppDetailPage({super.key, required this.msg});
+  const AppAboutPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (bool didPop, dynamic result) {
-        // 防止重复执行或者死循环
         if (didPop) return;
         _backToHome(context);
       },
       child: Scaffold(
-        appBar: AppBar(title: Text("Details")),
+        appBar: AppBar(title: Text("About")),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 20,
             children: [
-              Text(msg, style: TextStyle(fontSize: 30)),
-              TextButton(
+              Text("About"),
+              ElevatedButton(
                 onPressed: () => _backToHome(context),
-                child: Text("返回首页"),
+                child: Text("回到首页"),
               ),
             ],
           ),
@@ -36,8 +32,5 @@ class AppDetailPage extends StatelessWidget {
   }
 
   void _backToHome(BuildContext context) =>
-      // 方式一
-      Navigator.of(context).pop<String>("My detail msg");
-  // 方式二
-  // Navigator.pop(context);
+      Navigator.pop(context, "a msg from about page");
 }

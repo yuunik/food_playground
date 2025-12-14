@@ -16,6 +16,9 @@ class App extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       routes: AppRouter.routes,
       initialRoute: AppRouter.initialRoute,
+
+      /// 当路由路径无法匹配时, 触发此回调, 即路由钩子函数,
+      /// 可以在这里去对路由进行处理
       onGenerateRoute: AppRouter.generateRouter,
       onUnknownRoute: AppRouter.unknownRoute,
     );
